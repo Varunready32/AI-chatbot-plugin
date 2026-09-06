@@ -77,8 +77,8 @@ export default function Dashboard() {
     <main className="page">
       <header className="topbar">
         <div>
-          <div className="eyebrow"><Sparkles size={16}/> Microsoft Foundry · Plug-and-Play Ask AI POC</div>
-          <h1>Portable Table Analytics Assistant</h1>
+          <div className="eyebrow"><Sparkles size={16}/> Plug-and-Play </div>
+          <h1>Table Analytics Assistant</h1>
           <p>The sample app gets its dashboard data from PostgreSQL. Ask AI receives the already-rendered table rows and analyzes only that attached dataset.</p>
         </div>
         <div className="architecture-pill"><PlugZap size={17}/> Plugin is data-source independent</div>
