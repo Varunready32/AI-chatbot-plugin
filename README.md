@@ -1,6 +1,6 @@
 # Plug-and-Play Ask AI Table Analytics POC
 
-This repository is a **new POC** based on the e-commerce dashboard, redesigned around the real enterprise goal: a reusable Ask AI component that can be embedded beside existing forecast/analytics tables across multiple client applications.
+This repository is based on the e-commerce dashboard, redesigned around the real enterprise goal: a reusable Ask AI component that can be embedded beside existing ecommerce/analytics tables across multiple client applications.
 
 ## Core idea
 
@@ -53,7 +53,7 @@ A host application sends:
 
 The Foundry model sees the schema and context. The actual rows remain in backend request context and are accessed by tools. Numerical answers must use tools.
 
-## Local setup (recommended)
+## Local setup
 
 ### 1. Start only PostgreSQL
 
@@ -130,16 +130,7 @@ Open the Vite URL, normally `http://localhost:5173`.
 - `Show city revenue as a bar chart.`
 
 Watch the architecture: the dashboard rows came from PostgreSQL, but after the table is rendered, the Ask AI request contains those rows and the generic AI tools analyze that supplied dataset.
-
-## How to prove Ask AI is independent of PostgreSQL
-
-1. Load the dashboard while PostgreSQL is running.
-2. Open Ask AI and ask a question; it uses the rows sent with that request.
-3. Inspect the browser Network tab for `POST /api/agent/chat`: the request contains `table.columns` and `table.rows`.
-4. Inspect `backend/app/ai/tools.py`: neither Ask AI tool imports `database.py` nor `services/analytics.py`.
-5. Inspect `backend/app/services/table_analytics.py`: it performs generic operations over `list[dict]` only.
-
-For a stricter demo, you can later add a snapshot mode that caches table data in the browser, stop PostgreSQL after loading, and continue asking questions from that snapshot.
+ 
 
 ## Production evolution
 
